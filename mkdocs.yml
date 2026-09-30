@@ -1,0 +1,80 @@
+site_name: A-LEAF Documentation
+site_description: Documentation for the Argonne Large-Scale Electricity Analysis Framework
+site_url: https://argonne-aleaf.github.io/a-leaf-docs/
+repo_url: https://github.com/argonne-aleaf/a-leaf
+repo_name: argonne-aleaf/a-leaf
+copyright: Copyright &copy; 2026 UChicago Argonne, LLC
+docs_dir: docs
+site_dir: _site
+theme:
+  name: material
+  logo: assets/aleaf_mark.svg
+  favicon: assets/aleaf_mark.svg
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: blue
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  anchors: warn
+
+plugins:
+  - search
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Overview: README.md
+  - Getting Started: Getting_Started.md
+  - Glossary: Glossary.md
+  - Configuration:
+      - Simulation Setting: configuration/ALEAF_Simulation_Setting_File.md
+      - Simulation Configuration: configuration/Simulation_Configuration_Reference.md
+      - Policy and Financial Settings: configuration/Policy_and_Financial_Settings.md
+      - Scenario Reduction: configuration/Scenario_Reduction_and_Repday_Groups.md
+      - GPU Solvers: configuration/GPU_Solvers.md
+  - Database:
+      - Network Data: database/Network_Data_Reference.md
+      - Network Configuration: database/Network_Configuration_Reference.md
+      - Network Resolution: database/Network_Resolution.md
+      - Gen Technology: database/Gen_Technology_Reference.md
+      - Storage Modeling: database/Storage_Modeling_Reference.md
+      - Hybrid Resources: database/Hybrid_Resources_Reference.md
+      - Large Load: database/Large_Load_and_Demand_Response_Reference.md
+  - Models:
+      - GTEP:
+          - Overview: models/GTEP/GTEP_Overview.md
+          - Formulation: models/GTEP/GTEP_Formulation.md
+          - Planning Horizon: models/GTEP/GTEP_Planning_Horizon_and_Multi_Round.md
+          - Transmission Expansion: models/GTEP/GTEP_Transmission_Expansion.md
+          - Expansion Outputs: models/GTEP/GTEP_Expansion_Outputs.md
+      - Operation:
+          - Overview: models/Operation/Operation_Overview.md
+          - Formulation: models/Operation/Operation_Formulation.md
+          - Execution: models/Operation/Operation_Execution_and_Run_Modes.md
+          - Outputs: models/Operation/Operation_Outputs.md
+      - RA:
+          - Overview: models/RA/RA_Overview.md
+          - Formulation: models/RA/RA_Formulation.md
+          - Settings: models/RA/RA_Settings_and_Scenarios_Reference.md
+          - Scenarios: models/RA/RA_Scenarios_and_Data.md
+          - Execution: models/RA/RA_Execution_and_Results.md
+          - Metrics: models/RA/RA_Metrics_ELCC_and_DLOL.md
