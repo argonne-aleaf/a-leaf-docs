@@ -179,6 +179,21 @@ Lists the location of each time-series file, relative to the data folder of the 
 
 Hourly files have the columns `Year`, `Month`, `Day` and `Period` followed by one column per bus or data region, named by the region identifier. Alternative versions of the load, wind, PV and fuel files are selected with `Load_File_ID`, `Wind_Ons_File_ID`, `PV_File_ID` and `Fuel_ID` in `Simulation Configuration`; a value other than `Base` reads the file `timeseries_<type>_hourly_<ID>.csv` (or `timeseries_fuel_price_<ID>.csv`) from `timeseries_data_files/0_additional_scenarios/<type folder>/`.
 
+### Time convention
+
+All hourly files use a fixed Central Standard Time (CST) clock, UTC−6 with no daylight saving. Row 1 of a year is 00:00 on 1 January, and `Period` 1 to 24 are the 24 hours of a CST day. This applies to the hourly load, reserve-requirement, hydro, PV, RTPV, CSP and wind files.
+
+| Region | Local standard time |
+|---|---|
+| Pacific | model clock − 2 h |
+| Mountain | model clock − 1 h |
+| Central | model clock |
+| Eastern | model clock + 1 h |
+
+Representative days are whole days of the model clock. A CST day starts in the early morning of the Americas, so it keeps the evening peak and the solar day together. A UTC day would start in the late afternoon and split both.
+
+Data that you supply must follow the same clock, so that load, wind and solar stay in phase with each other. Daily and monthly inputs (temperature, the hydro daily budget and water value, fuel prices and load growth) carry no hourly clock, but the hydro daily budget refers to the same CST day as the hydro hourly profile.
+
 ## 2. Optional network configuration workbook
 
 The configuration workbook provides the region-mapping and zoning layer on top of the physical network. A-LEAF reads these sheets:
